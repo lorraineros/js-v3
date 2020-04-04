@@ -1,0 +1,22 @@
+body{
+    background: plum;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div{
+    border: 2px solid pink;
+    margin: 1em;
+    background: white;
+    padding: 1em;
+    color: black;
+}
+
+div:hover{
+    border: 3px solid crimson;
+    color: crimson;
+}
+
+a{
+    text-decoration: none;
+}

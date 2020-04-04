@@ -1,0 +1,148 @@
+<!-- bætti DigitalTime á toppnum og breytti hand class í id og bætti númerum 12,3,6,9-->
+<!--notaði .getElementById í staðinn fyrir .querySelector
+  og gerði calcDegrees formula (const calcDegrees = (time, max) => ((time / max) * 360) + 90;)-->
+<!--breytti bakgrunnin og látti hour-hand að vera blá og þykkri og second-hand rauð og þynnri-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+</head>
+<body>
+  <p id ="digitalTime"></p>
+  <div class="clock">
+    <div class="clock-face">
+      <div class="number twelve">12</div>
+      <div class="number three">3</div>
+      <div class="number six">6</div>
+      <div class="number nine">9</div>
+      <div class="hand" id= "hour-hand"></div>
+      <div class="hand" id= "min-hand"></div>
+      <div class="hand" id= "second-hand"></div>
+    </div>
+  </div>
+  <style>
+    html {
+      background: plum;
+      background-size: cover;
+      font-family:'Courier New', Courier, monospace;
+      text-align: center;
+      font-size: 10px;
+    }
+
+    body {
+      font-size: 2rem;
+      display: flex;
+      flex: 1;
+      min-height: 95vh;
+      align-items: center;
+    }
+
+    p{
+      color: white;
+      font-size: 35px;
+      position: absolute;
+      right: 150px;
+      width: 1205px;
+      height: 600px;
+    }
+
+    .clock {
+      width: 30rem;
+      height: 30rem;
+      border: 20px solid white;
+      border-radius: 50%;
+      margin: 50px auto;
+      position: relative;
+      padding: 2rem;
+      box-shadow: 0 0 0px 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #EFEFEF, inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px);
+      /* account for the height of the clock hands */
+    }
+
+    .hand {
+      width: 50%;
+      position: absolute;
+      top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+    }
+
+
+    #hour-hand{
+      width:35%;
+      right: 50%;
+      height: 8px;
+      background: darkblue;
+    }
+    #min-hand {
+      height: 6px;
+      background: black;;
+    }
+    #second-hand{
+      height: 3px;
+      background: darkred;
+    }
+    .number {
+      height:40px;
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      position: relative;
+    }
+
+   .twelve {
+      bottom: 40px;
+    }
+
+    .three {
+      top: 100px;
+      left: 180px;
+    }
+
+    .six {
+      top: 240px;
+    }
+    .nine {
+      top: 20px;
+      right: 180px;
+    }
+  </style>
+  <script>
+      const secondHand = document.getElementById('second-hand');
+      const minuteHand = document.getElementById('min-hand');
+      const hourHand = document.getElementById('hour-hand');
+      const digitalTime = document.getElementById('digitalTime');
+
+      function setDate(){
+        const now = new Date();
+        const calcDegrees = (time, max) => ((time / max) * 360) + 90;
+
+        const seconds = now.getSeconds();
+        const secondDegrees = calcDegrees(seconds, 60);
+
+        const mins = now.getMinutes();
+        const minuteDegrees = calcDegrees(mins, 60);
+
+        const hour = now.getHours();
+        const hourDegrees = calcDegrees(now.getHours(), 12);
+
+        secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+        minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
+        hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+
+        digitalTime.textContent =`Time: ${hour}:${mins < 10 ? '0' : ''}${mins}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+        }
+      setInterval(setDate, 1000);
+      setDate();
+  </script>
+</body>
+</html>

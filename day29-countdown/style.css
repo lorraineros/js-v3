@@ -1,0 +1,88 @@
+/*breytti bakgrunnslit, fontsize, fontfamily og border size*/
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  background: black;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0px 0px 8px lime;
+}
+
+.display__time-left {
+  font-weight: 100;
+  font-size: 20rem;
+  margin: 0;
+  color: white;
+  text-shadow: 0px 0px 8px #09ff00;
+}
+
+.timer {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.timer__controls {
+  display: flex;
+}
+
+.timer__controls > * {
+  flex: 1;
+}
+
+.timer__controls form {
+  flex: 1;
+  display: flex;
+}
+
+.timer__controls input {
+  flex: 1;
+  border: 0;
+  font-size: 2rem;
+  padding: 5rem;
+  background: white;
+  font-family: 'Orbitron', sans-serif;
+  color: darkgreen;
+}
+
+.timer__button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  text-shadow: 0px 0px 8px #09ff00;
+  font-size: 3rem;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.1);
+  border-bottom: 3px solid green;
+  border-right: 3px solid green;
+  padding: 1rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.timer__button:hover,
+.timer__button:focus {
+  background: rgba(0, 255, 98, 0.13);
+  outline: 0;
+}
+
+.display {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.display__end-time {
+  font-size: 4rem;
+  color: white;
+}
